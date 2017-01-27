@@ -6,7 +6,7 @@ image_resource:
   source: {repository: busybox}
 
 inputs:
-- name: git-branch
+- name: concourse-configs
 
 outputs:
 - name: lint-reports

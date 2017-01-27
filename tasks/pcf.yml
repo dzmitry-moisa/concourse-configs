@@ -6,7 +6,7 @@ image_resource:
   source: {repository: concourse/static-golang}
 
 inputs:
-- name: git-branch
+- name: concourse-configs
 
 run:
   path: concourse-configs/tasks/scripts/pcf.sh
