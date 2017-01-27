@@ -1,7 +1,7 @@
 - name: my-repo-branch-job-<%= branch_name %>
   plan:
   - get: my-repo-branch
-    resource: my-repo-branch-<%= branch_name %>
+    resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
   - task: my-repo-branch-task
