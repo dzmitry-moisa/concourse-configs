@@ -4,9 +4,9 @@
     uri: <%= uri %>
     branch: <%= branch_name %>
 
-- name: lint-reports
+- name: lint-reports-<%= branch_name %>
   type: dummy
 
-- name: unit-test-reports
+- name: unit-test-reports-<%= branch_names %>
   type: dummy
 

@@ -9,7 +9,7 @@
     config:
       params:
         branch: <%= branch_name %>
-  - put: lint-reports
+  - put: lint-reports-<%= branch_name%>
 
 - name: unit-tests-<%= branch_name %>
   plan:
@@ -22,14 +22,14 @@
     config:
       params:
         branch: <%= branch_name %>
-  - put: unit-test-reports
+  - put: unit-test-reports-<%= branch_name%>
 
 
 - name: push-to-pcf-<%= branch_name %>
   plan:
-  - get: lint-reports
+  - get: lint-reports-<%= branch_name %>
     passed: [lint-<%= branch_name %>]
-  - get: unit-test-reports
+  - get: unit-test-reports-<%= branch_name %>
     passed: [unit-tests-<%= branch_name %>]
   - task: push-to-pcf-task
     file: git-branch/ci/pcf.yml
