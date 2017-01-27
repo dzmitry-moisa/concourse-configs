@@ -5,9 +5,9 @@
     params: {depth: 20}
     trigger: true
   - get: concourse-configs
-    resource: concorse-configs
+    resource: concourse-configs
   - task: lint-task
-    file: concorse-configs/tasks/lint.yml
+    file: concourse-configs/tasks/lint.yml
     config:
       params:
         BRANCH_NAME: <%= branch_name %>
