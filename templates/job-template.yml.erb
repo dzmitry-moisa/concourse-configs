@@ -28,7 +28,7 @@
   plan:
   - get: git-branch
     resource: git-branch-<%= branch_name %>
-    passed: [lint-<%= branch_name %>]
+    passed: [unit-tests-<%= branch_name %>]
     params: {depth: 20}
     trigger: true
   - task: sometask
