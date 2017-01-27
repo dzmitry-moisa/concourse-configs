@@ -8,7 +8,7 @@
     file: git-branch/ci/lint.yml
     config:
       params:
-        BRANCH_NAME: <%= branch_name %>
+        branch: <%= branch_name %>
 
 - name: unit-tests-<%= branch_name %>
   plan:
