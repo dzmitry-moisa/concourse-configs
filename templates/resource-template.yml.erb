@@ -4,12 +4,6 @@
     uri: <%= uri %>
     branch: <%= branch_name %>
 
-- name: concourse-configs-<%= branch_name %>
-  type: git
-  source:
-    uri: https://github.com/dzmitry-moisa/concourse-configs.git
-    branch: master
-
 - name: lint-reports-<%= branch_name %>
   type: dummy
 
