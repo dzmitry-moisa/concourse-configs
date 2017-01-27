@@ -4,7 +4,7 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs
+  - get: concourse-configs-<%= branch_name %>
     resource: concourse-configs
     params: {depth: 20}
   - task: lint-task
@@ -20,7 +20,7 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs
+  - get: concourse-configs-<%= branch_name %>
     resource: concourse-configs
     params: {depth: 20}
   - task: unit-tests-task
@@ -41,7 +41,7 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs
+  - get: concourse-configs-<%= branch_name %>
     resource: concourse-configs
     params: {depth: 20}
   - task: push-to-pcf-task
