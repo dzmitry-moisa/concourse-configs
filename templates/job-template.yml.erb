@@ -4,8 +4,8 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs-<%= branch_name %>
-    resource: concourse-configs
+  - get: concourse-configs
+    resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: lint-task
     file: git-branch/ci/lint.yml
@@ -20,8 +20,8 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs-<%= branch_name %>
-    resource: concourse-configs
+  - get: concourse-configs
+    resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: unit-tests-task
     file: git-branch/ci/unit-tests.yml
@@ -41,8 +41,8 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs-<%= branch_name %>
-    resource: concourse-configs
+  - get: concourse-configs
+    resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: push-to-pcf-task
     file: git-branch/ci/pcf.yml
