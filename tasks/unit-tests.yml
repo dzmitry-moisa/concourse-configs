@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: busybox}
+
+inputs:
+- name: git-branch
+
+outputs:
+- name: unit-test-reports
+
+run:
+  path: concourse-configs/tasks/scripts/unit-tests.sh

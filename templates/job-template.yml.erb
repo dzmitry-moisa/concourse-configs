@@ -4,6 +4,9 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
+  - get: concourse-configs
+    resource: concourse-configs
+    params: {depth: 20}
   - task: lint-task
     file: git-branch/ci/lint.yml
     config:
@@ -17,6 +20,9 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
+  - get: concourse-configs
+    resource: concourse-configs
+    params: {depth: 20}
   - task: unit-tests-task
     file: git-branch/ci/unit-tests.yml
     config:
@@ -35,6 +41,9 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
+  - get: concourse-configs
+    resource: concourse-configs
+    params: {depth: 20}
   - task: push-to-pcf-task
     file: git-branch/ci/pcf.yml
     config:
