@@ -1,0 +1,11 @@
+name: my-repo-branch-job-<%= branch_name %>
+plan:
+- get: my-repo-branch
+  resource: my-repo-branch-<%= branch_name %>
+  params: {depth: 20}
+  trigger: true
+- task: my-repo-branch-task
+  file: my-repo-branch/ci/tasks/my-repo-branch-task.yml
+  config:
+    params:
+      BRANCH_NAME: <%= branch_name %>
