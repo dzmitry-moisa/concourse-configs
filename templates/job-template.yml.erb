@@ -8,7 +8,7 @@
     resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: lint-task
-    file: git-branch/ci/lint.yml
+    file: concourse-configs/tasks/lint.yml
     config:
       params:
         branch: <%= branch_name %>
@@ -24,7 +24,7 @@
     resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: unit-tests-task
-    file: git-branch/ci/unit-tests.yml
+    file: concourse-configs/tasks/unit-tests.yml
     config:
       params:
         branch: <%= branch_name %>
@@ -45,7 +45,7 @@
     resource: concourse-configs-<%= branch_name %>
     params: {depth: 20}
   - task: push-to-pcf-task
-    file: git-branch/ci/pcf.yml
+    file: concourse-configs/tasks/pcf.yml
     config:
       params:
         branch: <%= branch_name %>
