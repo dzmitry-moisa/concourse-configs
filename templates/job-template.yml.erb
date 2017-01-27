@@ -12,9 +12,13 @@
 
 - name: unit-tests-<%= branch_name %>
   plan:
+  - get: git-branch
+    resource: git-branch-<%= branch_name %>
+    passed: [lint-<%= branch_name %>]
+    params: {depth: 20}
+    trigger: true
   - task: sometask
     file: git-branch/concourse.yml
-    passed: [lint-<%= branch_name %>]
     config:
       params:
         BRANCH_NAME: <%= branch_name %>
