@@ -31,6 +31,10 @@
     passed: [lint-<%= branch_name %>]
   - get: unit-test-reports-<%= branch_name %>
     passed: [unit-tests-<%= branch_name %>]
+  - get: git-branch
+    resource: git-branch-<%= branch_name %>
+    params: {depth: 20}
+    trigger: true
   - task: push-to-pcf-task
     file: git-branch/ci/pcf.yml
     config:
