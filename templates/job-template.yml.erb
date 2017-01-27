@@ -12,7 +12,7 @@
 
 - name: unit-tests-<%= branch_name %>
   plan:
-  - task:
+  - task: sometask
     file: git-branch/concourse.yml
     passed: [lint-<%= branch_name %>]
     config:
