@@ -4,8 +4,6 @@
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
     trigger: true
-  - get: concourse-configs
-    resource: concourse-configs
   - task: lint-task
     file: git-branch/ci/lint.yml
     config:
