@@ -7,7 +7,7 @@
   - get: concourse-configs
     resource: concourse-configs
   - task: lint-task
-    file: concourse-configs/tasks/lint.yml
+    file: git-branch/ci/lint.yml
     config:
       params:
         BRANCH_NAME: <%= branch_name %>

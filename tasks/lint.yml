@@ -1,5 +1,0 @@
----
-platform: linux
-
-run:
-  path: concourse-configs/tasks/scripts/lint.sh
