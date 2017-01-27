@@ -14,7 +14,6 @@
   plan:
   - get: git-branch
     resource: git-branch-<%= branch_name %>
-    passed: [lint-<%= branch_name %>]
     params: {depth: 20}
     trigger: true
   - task: unit-tests-task
@@ -28,7 +27,7 @@
   plan:
   - get: git-branch
     resource: git-branch-<%= branch_name %>
-    passed: [unit-tests-<%= branch_name %>]
+    passed: [lint-<%= branch_name %>, unit-tests-<%= branch_name %>]
     params: {depth: 20}
     trigger: true
   - task: push-to-pcf-task
