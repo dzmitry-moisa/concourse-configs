@@ -17,11 +17,11 @@
     passed: [lint-<%= branch_name %>]
     params: {depth: 20}
     trigger: true
-  - task: sometask
-    file: git-branch/concourse.yml
+  - task: unit-tests-task
+    file: git-branch/ci/unit-tests.yml
     config:
       params:
-        BRANCH_NAME: <%= branch_name %>
+        branch: <%= branch_name %>
 
 
 - name: push-to-pcf-<%= branch_name %>
@@ -31,8 +31,8 @@
     passed: [unit-tests-<%= branch_name %>]
     params: {depth: 20}
     trigger: true
-  - task: sometask
-    file: git-branch/concourse.yml
+  - task: push-to-pcf-task
+    file: git-branch/ci/pcf.yml
     config:
       params:
-        BRANCH_NAME: <%= branch_name %>
+        branch: <%= branch_name %>
