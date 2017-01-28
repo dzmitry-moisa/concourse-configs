@@ -29,3 +29,5 @@ cf bind-service "${APP_NAME}" "${DB_NAME}"
 
 "Starting ${APP_NAME}..."
 cf start "${APP_NAME}"
+
+./deploy/post-deploy.sh

@@ -50,3 +50,15 @@
       params:
         branch: <%= branch_name %>
         repo: <%= repo_name %>
+
+- name: ui-tests-<%= branch_name %>
+  plan:
+  - get: concourse-configs
+    resource: concourse-configs
+    params: {depth: 20}
+    passed: [push-to-pcf-<%= branch_name %>]
+  - task: run-unit-tests
+    file: concourse-configs/tasks/ui-tests.yml
+    config:
+      params:
+        TESTING_URL=<%= repo_name %>-<%= branch_name %>.apps.pcfdemo.tk
