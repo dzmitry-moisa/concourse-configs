@@ -10,3 +10,4 @@ inputs:
 
 run:
   path: concourse-configs/tasks/scripts/ui-tests.sh
+
