@@ -48,6 +48,7 @@
   - get: concourse-configs
     resource: concourse-configs
     params: {depth: 20}
+    trigger: true
   - task: push-to-pcf-task
     file: concourse-configs/tasks/pcf.yml
     config:
@@ -59,6 +60,7 @@
 - name: ui-tests-<%= branch_name %>
   plan:
   - get: deploy-result-<%= branch_name %>
+    passed: [push-to-pcf-<%= branch_name %>]
     trigger: true
   - get: concourse-configs
     resource: concourse-configs
