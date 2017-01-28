@@ -43,7 +43,7 @@ if [ "$(cf service ${DB_NAME} --guid | grep FAILED)" == "FAILED" ]
 		apt-get update
 		apt-get --yes --force-yes install mysql-client
 	
-		mysql -u${username} -p${password} -h${hostname} dbname < pivotal.sql
+		mysql -u${username} -p${password} -h${hostname} ${dbname} < pivotal.sql
 	fi
 fi
 
