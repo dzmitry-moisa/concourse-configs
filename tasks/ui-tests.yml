@@ -1,0 +1,12 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: busybox}
+
+inputs:
+- name: concourse-configs
+
+run:
+  path: concourse-configs/tasks/scripts/ui-tests.sh
