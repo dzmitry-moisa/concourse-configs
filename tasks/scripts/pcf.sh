@@ -50,7 +50,3 @@ fi
 
 echo "Starting ${APP_NAME}..."
 cf start "${APP_NAME}"
-
-if [ -f ./deploy/post-deploy.sh ]; then
-  bash ./deploy/post-deploy.sh 
-fi
