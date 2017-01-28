@@ -41,14 +41,14 @@ if [ "$(cf service ${DB_NAME} --guid | grep FAILED)" == "FAILED" ]
 		hostname=$(cat tmp | grep \"hostname\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
 		dbname=$(cat tmp | grep jdbcUrl -A 1 | grep name | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g -e s/\n//g)
 
-		apt-get -y --force-yes intall mysql
+		apt-get --yes --force-yes install mysql
 	
 		mysql -u${username} -p${password} -h${hostname} dbname < pivotal.sql
 	fi
 fi
 
 
-"Starting ${APP_NAME}..."
+echo "Starting ${APP_NAME}..."
 cf start "${APP_NAME}"
 
 if [ -f ./deploy/post-deploy.sh ]; then
