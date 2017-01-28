@@ -21,6 +21,9 @@ cf login -a https://api.system.pcfdemo.tk \
 echo "Pushing application ${APP_NAME} to PCF on branch ${branch}..."
 cf push "${APP_NAME}" -b php_buildpack --no-start
 
+echo "Enabling ssh..."
+cf ssh-enabled ${APP_NAME}
+
 echo "Creating ${DB_NAME} database"
 cf create-service p-mysql 100mb "${DB_NAME}"
 
