@@ -35,8 +35,10 @@
   plan:
   - get: lint-reports-<%= branch_name %>
     passed: [lint-<%= branch_name %>]
+    trigger: true
   - get: unit-test-reports-<%= branch_name %>
     passed: [unit-tests-<%= branch_name %>]
+    trigger: true
   - get: git-branch
     resource: git-branch-<%= branch_name %>
     params: {depth: 20}
@@ -50,9 +52,13 @@
       params:
         branch: <%= branch_name %>
         repo: <%= repo_name %>
+  - put: deploy-result-<%= branch_name %>
 
 - name: ui-tests-<%= branch_name %>
   plan:
+  - get: deploy-result
+    resource: deploy-result-<%= branch_name %>
+    trigger: true
   - get: concourse-configs
     resource: concourse-configs
     params: {depth: 20}
