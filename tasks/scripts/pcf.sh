@@ -32,17 +32,19 @@ if [ "$(cf service ${DB_NAME} --guid | grep FAILED)" == "FAILED" ]
 
 	echo "Binding ${APP_NAME} to ${DB_NAME}..."
 	cf bind-service "${APP_NAME}" "${DB_NAME}"
+	
+	if [ -f pivotal.sql ]; then
+		cf env ${APP_NAME} > tmp
 
-	cf env ${APP_NAME} > tmp
+		password=$(cat tmp | grep \"password\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
+		username=$(cat tmp | grep \"username\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
+		hostname=$(cat tmp | grep \"hostname\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
+		dbname=$(cat tmp | grep jdbcUrl -A 1 | grep name | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g -e s/\n//g)
 
-	password=$(cat tmp | grep \"password\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
-	username=$(cat tmp | grep \"username\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
-	hostname=$(cat tmp | grep \"hostname\": | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g)
-	dbname=$(cat tmp | grep jdbcUrl -A 1 | grep name | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g -e s/\n//g)
-
-	apt-get -y --force-yes intall mysql
-
-	mysql -u${username} -p${password} -h${hostname} dbname < pivotal.sql
+		apt-get -y --force-yes intall mysql
+	
+		mysql -u${username} -p${password} -h${hostname} dbname < pivotal.sql
+	fi
 fi
 
 
