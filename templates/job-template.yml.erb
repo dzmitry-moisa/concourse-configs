@@ -57,6 +57,7 @@
     resource: concourse-configs
     params: {depth: 20}
     passed: [push-to-pcf-<%= branch_name %>]
+    trigger: true
   - task: run-unit-tests
     file: concourse-configs/tasks/ui-tests.yml
     config:
