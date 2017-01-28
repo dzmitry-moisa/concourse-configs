@@ -55,4 +55,4 @@ if [ -f ./deploy/post-deploy.sh ]; then
   bash ./deploy/post-deploy.sh 
 fi
 
-cf ssh ${APP_NAME} -c "cd ~ && wget  https://dl.influxdata.com/telegraf/releases/telegraf-1.2.0_linux_amd64.tar.gz && tar xvfz telegraf-1.2.0_linux_amd64.tar.gz && ~/telegraf/usr/bin/telegraf -config /home/vcap/app/htdocs/deploy/telegraf.conf &"
+cf ssh ${APP_NAME} -c "cd ~ && wget  https://dl.influxdata.com/telegraf/releases/telegraf-1.2.0_linux_amd64.tar.gz && tar xvfz telegraf-1.2.0_linux_amd64.tar.gz && ~/telegraf/usr/bin/telegraf -config /home/vcap/app/htdocs/deploy/telegraf.conf &>/dev/null &"
