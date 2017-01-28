@@ -58,8 +58,7 @@
 
 - name: ui-tests-<%= branch_name %>
   plan:
-  - get: deploy-result
-    resource: deploy-result-<%= branch_name %>
+  - get: deploy-result-<%= branch_name %>
     trigger: true
   - get: concourse-configs
     resource: concourse-configs
