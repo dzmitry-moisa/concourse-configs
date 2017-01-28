@@ -7,6 +7,7 @@
   - get: concourse-configs
     resource: concourse-configs
     params: {depth: 20}
+    trigger: true
   - task: lint-task
     file: concourse-configs/tasks/lint.yml
     config:
@@ -23,6 +24,7 @@
   - get: concourse-configs
     resource: concourse-configs
     params: {depth: 20}
+    trigger: true
   - task: unit-tests-task
     file: concourse-configs/tasks/unit-tests.yml
     config:
