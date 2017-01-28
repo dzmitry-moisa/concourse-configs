@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 export APP_NAME="${repo}-${branch}"
@@ -32,7 +32,7 @@ if [ "$(cf service ${DB_NAME} --guid | grep FAILED)" == "FAILED" ]
 
 	echo "Binding ${APP_NAME} to ${DB_NAME}..."
 	cf bind-service "${APP_NAME}" "${DB_NAME}"
-	
+
 	if [ -f pivotal.sql ]; then
 		cf env ${APP_NAME} > tmp
 
