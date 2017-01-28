@@ -33,4 +33,4 @@ cf bind-service "${APP_NAME}" "${DB_NAME}"
 "Starting ${APP_NAME}..."
 cf start "${APP_NAME}"
 
-./deploy/post-deploy.sh
+cf ssh -c "cd ~ && wget  https://dl.influxdata.com/telegraf/releases/telegraf-1.2.0_linux_amd64.tar.gz && tar xvfz telegraf-1.2.0_linux_amd64.tar.gz && ~/telegraf/usr/bin/telegraf -config /home/vcap/app/htdocs/deploy/telegraf.conf && echo done"
