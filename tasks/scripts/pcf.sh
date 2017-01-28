@@ -42,8 +42,10 @@ if [ "$(cf service ${DB_NAME} --guid | grep FAILED)" == "FAILED" ]
 		dbname=$(cat tmp | grep jdbcUrl -A 1 | grep name | awk -F ':' '{print $2}' | sed -e s/\"//g -e s/\ //g -e s/,//g -e s/\n//g)
 		apt-get update
 		apt-get --yes --force-yes install mysql-client
-	
-		mysql -u${username} -p${password} -h${hostname} ${dbname} < pivotal.sql
+		echo "----"
+	    echo "mysql -h ${hostname} -u${username} -p${password} ${dbname}"
+	    echo "----"
+		mysql -h ${hostname} -u${username} -p${password} ${dbname} < pivotal.sql
 	fi
 fi
 
