@@ -33,43 +33,43 @@
   - put: unit-test-reports-<%= branch_name%>
 
 
-- name: push-to-pcf-<%= branch_name %>
-  plan:
-  - get: lint-reports-<%= branch_name %>
-    passed: [lint-<%= branch_name %>]
-    trigger: true
-  - get: unit-test-reports-<%= branch_name %>
-    passed: [unit-tests-<%= branch_name %>]
-    trigger: true
-  - get: git-branch
-    resource: git-branch-<%= branch_name %>
-    params: {depth: 20}
-    trigger: true
-  - get: concourse-configs
-    resource: concourse-configs
-    params: {depth: 20}
-    trigger: true
-  - task: push-to-pcf-task
-    file: concourse-configs/tasks/pcf.yml
-    config:
-      params:
-        branch: <%= branch_name %>
-        repo: <%= repo_name %>
-  - put: deploy-result-<%= branch_name %>
+#- name: push-to-pcf-<%= branch_name %>
+#  plan:
+#  - get: lint-reports-<%= branch_name %>
+#    passed: [lint-<%= branch_name %>]
+#    trigger: true
+#  - get: unit-test-reports-<%= branch_name %>
+#    passed: [unit-tests-<%= branch_name %>]
+#    trigger: true
+#  - get: git-branch
+#    resource: git-branch-<%= branch_name %>
+#    params: {depth: 20}
+#    trigger: true
+#  - get: concourse-configs
+#    resource: concourse-configs
+#    params: {depth: 20}
+#    trigger: true
+#  - task: push-to-pcf-task
+#    file: concourse-configs/tasks/pcf.yml
+#    config:
+#      params:
+#        branch: <%= branch_name %>
+#        repo: <%= repo_name %>
+#  - put: deploy-result-<%= branch_name %>
 
-- name: ui-tests-<%= branch_name %>
-  plan:
-  - get: deploy-result-<%= branch_name %>
-    passed: [push-to-pcf-<%= branch_name %>]
-    trigger: true
-  - get: concourse-configs
-    resource: concourse-configs
-    params: {depth: 20}
-    passed: [push-to-pcf-<%= branch_name %>]
-    trigger: true
-  - task: run-unit-tests
-    file: concourse-configs/tasks/ui-tests.yml
-    config:
-      params:
-        TESTING_URL: <%= repo_name %>-<%= branch_name %>.apps.pcfdemo.tk
+#- name: ui-tests-<%= branch_name %>
+#  plan:
+#  - get: deploy-result-<%= branch_name %>
+#    passed: [push-to-pcf-<%= branch_name %>]
+#    trigger: true
+#  - get: concourse-configs
+#    resource: concourse-configs
+#    params: {depth: 20}
+#    passed: [push-to-pcf-<%= branch_name %>]
+#    trigger: true
+#  - task: run-unit-tests
+#    file: concourse-configs/tasks/ui-tests.yml
+#    config:
+#      params:
+#        TESTING_URL: <%= repo_name %>-<%= branch_name %>.apps.pcfdemo.tk
 
