@@ -6,10 +6,10 @@ image_resource:
   source: {repository: busybox}
 
 inputs:
-- name: concourse-configs
+- name: drupal-app-git
 
 outputs:
 - name: lint-reports
 
 run:
-  path: concourse-configs/tasks/scripts/lint.sh
+  path: drupal-app-git/ci/tasks/scripts/lint.sh

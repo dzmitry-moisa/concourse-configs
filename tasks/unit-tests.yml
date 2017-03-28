@@ -6,10 +6,10 @@ image_resource:
   source: {repository: busybox}
 
 inputs:
-- name: concourse-configs
+- name: drupal-app-git
 
 outputs:
 - name: unit-test-reports
 
 run:
-  path: concourse-configs/tasks/scripts/unit-tests.sh
+  path: drupal-app-git/ci/tasks/scripts/unit-tests.sh

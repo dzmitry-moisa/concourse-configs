@@ -85,9 +85,8 @@ jobs:
         BRANCH_RESOURCE_TEMPLATE: template-repo/templates/resource-template.yml.erb
         BRANCH_JOB_TEMPLATE: template-repo/templates/job-template.yml.erb
         PIPELINE_RESOURCE_TYPE_TEMPLATE: template-repo/templates/resource-type-template.yml.erb
-        CONCOURSE_URL: http://concourse.pcfdemo.tk:8080
+        CONCOURSE_URL: http://192.168.100.4:8080
         CONCOURSE_USERNAME: concourse
         CONCOURSE_PASSWORD: concourse
         CONCOURSE_TEAM: main
-        # PIPELINE_NAME: pcf_demo
         PIPELINE_COMMON_RESOURCES_TEMPLATE: template-repo/templates/common-resources-template.yml.erb
