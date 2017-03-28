@@ -10,7 +10,7 @@
 - name: unit-tests-<%= branch_name %>
   plan:
   - get: git-branch
-    resource: git-branch-git-<%= branch_name %>
+    resource: drupal-app-git-<%= branch_name %>
     trigger: true
   - task: unit-tests-task
     file: drupal-app-git-<%= branch_name %>/ci/tasks/unit-tests.yml
