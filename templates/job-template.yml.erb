@@ -1,17 +1,17 @@
 - name: lint-<%= branch_name %>
   plan:
   - get: drupal-app-git
-    resource: drupal-app-<%= branch_name %>
+    resource: drupal-app-git<%= branch_name %>
     trigger: true
   - task: lint-task
-    file: drupal-app-git/ci/tasks/lint.yml
+    file: drupal-app-git-<%= branch_name %>/ci/tasks/lint.yml
   - put: lint-reports-<%= branch_name%>
 
 - name: unit-tests-<%= branch_name %>
   plan:
   - get: git-branch
-    resource: git-branch-<%= branch_name %>
+    resource: git-branch-git-<%= branch_name %>
     trigger: true
   - task: unit-tests-task
-    file: drupal-app-git/ci/tasks/unit-tests.yml
+    file: drupal-app-git-<%= branch_name %>/ci/tasks/unit-tests.yml
   - put: unit-test-reports-<%= branch_name%>
