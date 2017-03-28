@@ -12,6 +12,9 @@
   - get: drupal-app-git
     resource: drupal-app-git-<%= branch_name %>
     trigger: true
+  - get: lint-reports-<%= branch_name%>
+    passed: [lint-<%= branch_name %>]
+    trigger: true
   - task: unit-tests-task
     file: drupal-app-git-<%= branch_name %>/ci/tasks/unit-tests.yml
   - put: unit-test-reports-<%= branch_name%>

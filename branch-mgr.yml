@@ -89,4 +89,4 @@ jobs:
         CONCOURSE_USERNAME: concourse
         CONCOURSE_PASSWORD: concourse
         CONCOURSE_TEAM: main
-        PIPELINE_COMMON_RESOURCES_TEMPLATE: template-repo/templates/common-resources-template.yml.erb
+        #PIPELINE_COMMON_RESOURCES_TEMPLATE: template-repo/templates/common-resources-template.yml.erb
